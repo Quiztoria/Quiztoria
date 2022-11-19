@@ -5,6 +5,8 @@ import QuizesFetch from './services/fetching/quizes';
 
 
 function App() {
+  const forButtons = new QuizesFetch({disableHandler:true});
+
   return (
     <div className="App">
       {/* { <QuestionsFetch type="multiple" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa"/> } */}
@@ -14,13 +16,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+        <a onClick={() => forButtons.saveQuiz(1, '1,2,3', 'test', 'avg')} >
+          MAKE REQUEST
         </a>
       </header>
     </div>

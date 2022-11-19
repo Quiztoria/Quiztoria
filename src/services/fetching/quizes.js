@@ -9,7 +9,7 @@ class QuizesFetch extends React.Component {
         this.getSingleQuiz = this.getSingleQuiz.bind(this);
 
         // init, the one who rules them all.
-        this.handleRequest(props);
+        if(!this.props.disableHandler) this.handleRequest(props);
     }
 
     handleRequest(){
