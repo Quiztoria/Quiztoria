@@ -1,6 +1,6 @@
 import React from 'react';
 
-class QuestionsController extends React.Component {
+class QuestionsFetch extends React.Component {
     constructor(){
         super();
 
@@ -21,4 +21,4 @@ class QuestionsController extends React.Component {
     }
 }
 
-export default QuestionsController;
+export default QuestionsFetch;

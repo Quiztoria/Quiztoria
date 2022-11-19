@@ -16,7 +16,7 @@ class FetchController extends React.Component {
     }
 
     render(){
-        return 'got the response';
+        return '';
     }
 }
 
