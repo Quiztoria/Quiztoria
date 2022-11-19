@@ -6,7 +6,13 @@ class FetchController extends React.Component {
 
     constructor(){
         super();
-        console.log(this.#baseUrl);
+        this.getUrl = this.getUrl.bind(this);
+        
+        console.log(this.getUrl());
+    }
+
+    getUrl(){
+        return this.#baseUrl + ':' + this.#port;
     }
 
     render(){
