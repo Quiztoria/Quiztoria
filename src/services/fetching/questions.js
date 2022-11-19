@@ -36,7 +36,7 @@ class QuestionsFetch extends React.Component {
         console.log('single question');
 
         const fetch = new FetchController();
-        console.log(fetch.makeRequest('questions/5'));
+        console.log(fetch.makeRequest('questions/5', 'GET'));
     }
 
     render(){

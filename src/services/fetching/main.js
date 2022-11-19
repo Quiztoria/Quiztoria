@@ -16,8 +16,11 @@ class FetchController extends React.Component {
         return this.#baseUrl + ':' + this.#port;
     }
 
-    makeRequest( url ){
-        return this.getUrl() + '/' + url;
+    async makeRequest( url, method, body ){
+        const createHeaders = { method, body };
+        const response = await fetch( this.getUrl() + '/' + url, createHeaders );
+        
+        return response;
     }
 
     render(){
