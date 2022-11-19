@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import FetchController from './services/fetchController';
+import FetchController from './services/fetching/main';
 
 
 function App() {

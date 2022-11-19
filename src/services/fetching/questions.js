@@ -11,7 +11,7 @@ class QuestionsFetch extends React.Component {
     getMulitpleQuestions( yearFrom, yearTo, level, amount ){
 
     }
-    
+
     getSingleQuestion( yearFrom, yearTo, level ){
     
     }
