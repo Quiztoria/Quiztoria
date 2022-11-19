@@ -5,7 +5,16 @@ import QuizesFetch from './services/fetching/quizes';
 
 
 function App() {
-  const forButtons = new QuizesFetch({disableHandler:true});
+  const forButtons = new QuestionsFetch({disableHandler:true});
+  const dataToSend = {            
+    "answCorrect": "tak",
+    "answOpt1": "nie",
+    "answOpt2": "nie",
+    "answOpt3": "nie",
+    "dateEnd": "2022-11-19T21:11:55.435Z",
+    "dateStart": "2022-11-19T21:11:55.435Z",
+    "questionString": "test" 
+  }
 
   return (
     <div className="App">
@@ -16,7 +25,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a onClick={() => forButtons.saveQuiz(1, '1,2,3', 'test', 'avg')} >
+        <a onClick={() => forButtons.saveQuestion(dataToSend)} >
           MAKE REQUEST
         </a>
       </header>

@@ -41,8 +41,11 @@ class QuestionsFetch extends React.Component {
         //later
     }
 
-    saveQuestion(){
-        //later
+    saveQuestion(data){
+        const fetch = new FetchController();
+        const requestBody = JSON.stringify(data);
+
+        fetch.makeRequest("question", "POST", requestBody)
     }
 
     getMulitpleQuestions(){
@@ -57,10 +60,10 @@ class QuestionsFetch extends React.Component {
         //yearFrom, yearTo, level, tags
         console.log('single question');
 
-        const test = JSON.stringify({"answCorrect": "tak", "answOpt1": "nie", "answOpt2": "nie", "answOpt3": "nie", "dateEnd": "2022-11-19T21:11:55.435Z", "dateStart": "2022-11-19T21:11:55.435Z", "questionString": "test" });
+        
 
         const fetch = new FetchController();
-        fetch.makeRequest("question", "POST", test)
+        fetch.makeRequest("question/1", "GET")
     }
 
     render(){
