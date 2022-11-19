@@ -7,23 +7,36 @@ class QuizesFetch extends React.Component {
 
         this.getMultipleQuiz = this.getMultipleQuiz.bind(this);
         this.getSingleQuiz = this.getSingleQuiz.bind(this);
+        this.removeQuiz = this.removeQuiz.bind(this);
 
         // init, the one who rules them all.
         if(!this.props.disableHandler) this.handleRequest(props);
     }
 
     handleRequest(){
-        const { type, accountId, questionsId, quizName, quizLevel } = this.props;
+        const { type, accountId, questionsId, quizName, quizLevel, quizId } = this.props;
         
-        console.log(type);
-
-        if ( !type || type === 'single' ) {
-            this.getSingleQuiz(this.props);
-        } else if(type === 'save'){
-            this.saveQuiz(accountId, questionsId, quizName, quizLevel);
-        } else {
-            this.getMultipleQuiz(this.props);
+        switch (true) {
+            case !type || type === 'single':
+                this.getSingleQuiz(this.props);
+                break;
+            case type === 'multiple':
+                this.getMultipleQuiz(this.props);
+                break;
+            case type === 'save':
+                this.saveQuiz(accountId, questionsId, quizName, quizLevel);
+                break;
+            case type === 'delete':
+                this.removeQuiz(quizId);
+                break;
+            default:
+                console.error('Missing arguments for quizes function');
+                break;
         }
+    }
+
+    removeQuiz( quizId ){
+        //later
     }
 
     saveQuiz( accountId, questionsId, quizName, quizLevel ) {
