@@ -4,12 +4,10 @@ class FetchController extends React.Component {
     #baseUrl = 'http://10.250.194.45';
     #port = "8080";
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.getUrl = this.getUrl.bind(this);
         this.makeRequest = this.makeRequest.bind(this);
-        
-        console.log(this.getUrl());
     }
 
     getUrl(){

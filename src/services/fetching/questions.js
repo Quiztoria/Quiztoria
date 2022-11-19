@@ -6,10 +6,12 @@ class QuestionsFetch extends React.Component {
     constructor(props){
         super(props);
 
-        this.getMulitpleQuestions = this.getMulitpleQuestions.bind(this);
-        this.getSingleQuestion = this.getSingleQuestion.bind(this);
-        this.saveQuestion = this.saveQuestion.bind(this);
-        this.deleteQuestion = this.deleteQuestion.bind(this);
+        this.state = {doItOnce: false};
+
+        // this.getMulitpleQuestions = this.getMulitpleQuestions.bind(this);
+        // this.getSingleQuestion = this.getSingleQuestion.bind(this);
+        // this.saveQuestion = this.saveQuestion.bind(this);
+        // this.deleteQuestion = this.deleteQuestion.bind(this);
 
         // init, the one who rules them all.
         if(!this.props.disableHandler) this.handleRequest(props);
@@ -45,7 +47,7 @@ class QuestionsFetch extends React.Component {
         const fetch = new FetchController();
         const requestBody = JSON.stringify(data);
 
-        fetch.makeRequest("question", "POST", requestBody)
+        return fetch.makeRequest("question", "POST", requestBody);
     }
 
     getMulitpleQuestions(){
@@ -56,14 +58,13 @@ class QuestionsFetch extends React.Component {
         console.log(fetch.makeRequest('questions/5,6,7,8'));
     }   
 
-    getSingleQuestion(){
+    async getSingleQuestion(props){
         //yearFrom, yearTo, level, tags
-        console.log('single question');
-
-        
+        const { id, yearFrom, yearTo, tags } = props;
 
         const fetch = new FetchController();
-        fetch.makeRequest("question/1", "GET")
+        const response = await fetch.makeRequest(`question/${id}`, "GET");
+        return response.json();
     }
 
     render(){
