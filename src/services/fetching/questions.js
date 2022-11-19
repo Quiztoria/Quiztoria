@@ -10,7 +10,7 @@ class QuestionsFetch extends React.Component {
         this.getSingleQuestion = this.getSingleQuestion.bind(this);
 
         // init, the one who rules them all.
-        this.handleRequest(props);
+        if(!this.props.disableHandler) this.handleRequest(props);
     }
 
     handleRequest(){
