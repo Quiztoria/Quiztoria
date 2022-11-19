@@ -1,13 +1,15 @@
 import React from 'react';
+import FetchController from './main';
 
 class QuestionsFetch extends React.Component {
+
     constructor(props){
         super(props);
 
         this.getMulitpleQuestions = this.getMulitpleQuestions.bind(this);
         this.getSingleQuestion = this.getSingleQuestion.bind(this);
 
-        //init, the one who rules them all.
+        // init, the one who rules them all.
         this.handleRequest(props);
     }
 
@@ -24,11 +26,17 @@ class QuestionsFetch extends React.Component {
     getMulitpleQuestions(){
         //yearFrom, yearTo, level, amount
         console.log('multiple questions');
+
+        const fetch = new FetchController();
+        console.log(fetch.makeRequest('questions/5,6,7,8'));
     }   
 
     getSingleQuestion(){
         //yearFrom, yearTo, level, tags
         console.log('single question');
+
+        const fetch = new FetchController();
+        console.log(fetch.makeRequest('questions/5'));
     }
 
     render(){
