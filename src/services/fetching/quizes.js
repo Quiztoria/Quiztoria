@@ -13,10 +13,14 @@ class QuizesFetch extends React.Component {
     }
 
     handleRequest(){
-        const { type } = this.props;
+        const { type, accountId, questionsId, quizName, quizLevel } = this.props;
+        
+        console.log(type);
 
         if ( !type || type === 'single' ) {
             this.getSingleQuiz(this.props);
+        } else if(type === 'save'){
+            this.saveQuiz(accountId, questionsId, quizName, quizLevel);
         } else {
             this.getMultipleQuiz(this.props);
         }
@@ -24,7 +28,8 @@ class QuizesFetch extends React.Component {
 
     saveQuiz( accountId, questionsId, quizName, quizLevel ) {
         const fetch = new FetchController();
-        console.log(fetch.makeRequest('quiz/5', 'post', {accountId, questionsId, quizName, quizLevel}));
+        const body = {accountId, questionsId, quizName, quizLevel}
+        console.log(fetch.makeRequest('quiz/5', 'POST', body));
     }
 
     getMultipleQuiz( yearFrom, yearTo, level, amount ){
