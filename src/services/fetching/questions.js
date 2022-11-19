@@ -57,8 +57,10 @@ class QuestionsFetch extends React.Component {
         //yearFrom, yearTo, level, tags
         console.log('single question');
 
+        const test = JSON.stringify({"answCorrect": "tak", "answOpt1": "nie", "answOpt2": "nie", "answOpt3": "nie", "dateEnd": "2022-11-19T21:11:55.435Z", "dateStart": "2022-11-19T21:11:55.435Z", "questionString": "test" });
+
         const fetch = new FetchController();
-        console.log(fetch.makeRequest('questions/5', 'GET'));
+        fetch.makeRequest("question", "POST", test)
     }
 
     render(){

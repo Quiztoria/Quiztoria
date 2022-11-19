@@ -1,7 +1,7 @@
 import React from 'react';
 
 class FetchController extends React.Component {
-    #baseUrl = 'localhost';
+    #baseUrl = 'http://10.250.194.45';
     #port = "8080";
 
     constructor(){
@@ -17,7 +17,7 @@ class FetchController extends React.Component {
     }
 
     async makeRequest( url, method, body ){
-        const createHeaders = { method, 'body': body };
+        const createHeaders = { method, 'body': body, headers:{'Content-Type': 'application/json'}  };
         const response = await fetch( this.getUrl() + '/' + url, createHeaders );
 
         return response;

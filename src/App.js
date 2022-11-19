@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* { <QuestionsFetch type="multiple" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa"/> } */}
+      {/* { <QuestionsFetch type="single" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa"/> } */}
       {/* { <QuizesFetch type="save" accountId="1" questionsId="1,2,3" quizName="test" quizLevel="average"/> } */}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
