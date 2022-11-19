@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import FetchController from './services/fetching/main';
+import QuestionsFetch from './services/fetching/questions';
 
 
 function App() {
   return (
     <div className="App">
-      { <FetchController /> }
+      { <QuestionsFetch type="single" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa"/> }
       
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
