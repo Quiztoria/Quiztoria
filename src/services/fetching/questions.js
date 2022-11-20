@@ -59,6 +59,15 @@ class QuestionsFetch extends React.Component {
         console.log(fetch.makeRequest('questions/5,6,7,8'));
     }   
 
+    async getAllQuestions(props){
+        console.log('all questions');
+        const { itemsPerPage, page } = props;
+
+        const fetch = new FetchController();
+        const response = await fetch.makeRequest(`question?itemsPerPage=${itemsPerPage}&page=${page}`, "GET");
+        return response.json();
+    }   
+
     async getSingleQuestion(props){
         //yearFrom, yearTo, level, tags
         const { id, yearFrom, yearTo, tags } = props;

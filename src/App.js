@@ -16,6 +16,7 @@ function App() {
     "questionString": "test" 
   }
   const questionDeleteRequest = { id: 1 };
+  const questionGetAllRequest    = { itemsPerPage: 10, page:0 };
   const questionGetRequest    = { id: 1 };
 
   return (
@@ -27,8 +28,11 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <a onClick={() => forButtons.getAllQuestions(questionGetAllRequest)} >
+          QUESTION - GET ALL REQUEST
+        </a>
         <a onClick={() => forButtons.getSingleQuestion(questionGetRequest)} >
-          QUESTION - GET REQUEST
+          QUESTION - GET SINGLE REQUEST
         </a>
         <a onClick={() => forButtons.saveQuestion(questionPostRequest)} >
           QUESTION - POST REQUEST
@@ -36,6 +40,8 @@ function App() {
         <a onClick={() => forButtons.deleteQuestion(questionDeleteRequest)} >
           QUESTION - DELETE REQUEST
         </a>
+
+        <hr style={{width:"300px"}}/>
       </header>
     </div>
   );
