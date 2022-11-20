@@ -7,9 +7,17 @@ import React from 'react';
 class App extends React.Component{
   constructor(){
     super()
-    this.state = { questionDeleteRequest: {id: 1}, questionGetRequest: {id: 1} }
+    this.state = { 
+      questionDeleteRequest: {id: 1}, 
+      questionGetRequest: {id: 1},
+
+      quizGetRequest: {id: 1},
+      quizDeleteRequest: {id: 1},
+      quizAddQuestion: { questionId:1, quizId:1 }
+    }
   }
 
+  // Question related consts
   forButtons = new QuestionsFetch({disableHandler:true});
   questionPostRequest = {            
     "answCorrect": "tak",
@@ -20,8 +28,13 @@ class App extends React.Component{
     "dateStart": parseInt(2022),
     "questionString": "test" 
   }
-  
   questionGetAllRequest    = { itemsPerPage: 10, page:0 };
+
+  // Quiz related consts
+  for2Buttons = new QuizesFetch({disableHandler:true});
+  quizPostRequest = { name: "jakis quiz" }
+  quizGetAllRequest = { itemsPerPage: 10, page:0 };
+
 
   handleInput(e){
     const nameOfState = e.target.name;
@@ -50,13 +63,23 @@ class App extends React.Component{
           <a onClick={() => this.forButtons.saveQuestion(this.questionPostRequest)} >
             QUESTION - POST REQUEST
           </a>
-          
+
           <a onClick={() => this.forButtons.deleteQuestion(this.state.questionDeleteRequest)} >
             QUESTION - DELETE REQUEST
           </a>
           <input type="number" name="questionDeleteRequest" onChange={this.handleInput.bind(this)}/>
   
           <hr style={{width:"300px"}}/>
+
+          <a onClick={() => this.for2Buttons.getSingleQuiz(this.state.quizGetRequest)} >
+            QUIZ - GET REQUEST
+          </a>
+          <input type="number" name="quizGetRequest" onChange={this.handleInput.bind(this)}/>
+
+          <a onClick={() => this.for2Buttons.saveQuiz(this.quizPostRequest)} >
+            QUIZ - POST REQUEST
+          </a>
+
         </header>
       </div>
     );

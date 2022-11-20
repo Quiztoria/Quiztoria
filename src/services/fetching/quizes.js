@@ -5,9 +5,9 @@ class QuizesFetch extends React.Component {
     constructor(props){
         super(props);
 
-        this.getMultipleQuiz = this.getMultipleQuiz.bind(this);
-        this.getSingleQuiz = this.getSingleQuiz.bind(this);
-        this.removeQuiz = this.removeQuiz.bind(this);
+        // this.getMultipleQuiz = this.getMultipleQuiz.bind(this);
+        // this.getSingleQuiz = this.getSingleQuiz.bind(this);
+        // this.removeQuiz = this.removeQuiz.bind(this);
 
         // init, the one who rules them all.
         if(!this.props.disableHandler) this.handleRequest(props);
@@ -39,10 +39,11 @@ class QuizesFetch extends React.Component {
         //later
     }
 
-    saveQuiz( accountId, questionsId, quizName, quizLevel ) {
+    saveQuiz( data ) {
         const fetch = new FetchController();
-        const body = {accountId, questionsId, quizName, quizLevel}
-        console.log(fetch.makeRequest('quiz/5', 'POST', body));
+        const requestBody = data.name;
+
+        return fetch.makeRequest("quiz", "POST", requestBody);
     }
 
     getMultipleQuiz( yearFrom, yearTo, level, amount ){
@@ -50,9 +51,13 @@ class QuizesFetch extends React.Component {
         console.log(fetch.makeRequest('quiz/5,6,7,8'));
     }
     
-    getSingleQuiz( yearFrom, yearTo, level ){
+    async getSingleQuiz(props){
+        console.log(props);
+        const { id } = props;
+
         const fetch = new FetchController();
-        console.log(fetch.makeRequest('quiz/5'));
+        const response = await fetch.makeRequest(`quiz/${id}`, "GET");
+        return response.json();
     }
 
     render(){
