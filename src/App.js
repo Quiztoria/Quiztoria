@@ -18,7 +18,11 @@ class App extends React.Component{
       
       // Add question to quiz
       quizQuestionId: {id: 1},
-      quizId: {id: 1}
+      quizId: {id: 1},
+
+      // Search
+      yearBegin: { year: 1 },
+      yearEnd: { year: 1 }
     }
   }
 
@@ -29,8 +33,8 @@ class App extends React.Component{
     "answOpt1": "nie",
     "answOpt2": "nie",
     "answOpt3": "nie",
-    "dateEnd": parseInt(2022),
-    "dateStart": parseInt(2022),
+    "dateEnd": parseInt(1941),
+    "dateStart": parseInt(1943),
     "questionString": "test" 
   }
   questionGetAllRequest    = { itemsPerPage: 10, page:0 };
@@ -107,6 +111,15 @@ class App extends React.Component{
           <a onClick={() => this.for3Button.getPlacowki()} >
             MEiN - GET REQUEST -> GET PLACOWKI
           </a>
+
+          <hr style={{width:"300px"}}/>
+
+          <a onClick={() => this.forButtons.getQuestionsFromToDate({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd})} >
+            QUIZ - GET REQUEST -> Get all items, from year to year, start from year
+          </a>
+          <input type="number" name="yearBegin" onChange={this.handleInput.bind(this)}/>
+          <input type="number" name="yearEnd" onChange={this.handleInput.bind(this)}/>
+
         </header>
       </div>
     );

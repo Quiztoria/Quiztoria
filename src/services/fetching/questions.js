@@ -69,6 +69,17 @@ class QuestionsFetch extends React.Component {
         return response.json();
     }
 
+    async getQuestionsFromToDate(props){
+        //yearFrom, yearTo, level, tags
+        const { yearBegin, yearEnd } = props;
+        console.log(props);
+
+        const fetch = new FetchController();
+        const response = await fetch.makeRequest(`search/by-time-range/all?yearBegin=${yearBegin.id}&yearEnd=${yearEnd.id}`, "GET");
+        return response.json();
+    }
+
+
     render(){
         return '';
     }
