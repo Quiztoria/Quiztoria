@@ -1,8 +1,8 @@
 import React from 'react';
 
 class FetchController extends React.Component {
-    #baseUrl = 'http://10.250.194.45';
-    #port = "8080";
+    #baseUrl = 'http://borsuq.xyz';
+    #port = "80";
 
     constructor(props){
         super(props);
