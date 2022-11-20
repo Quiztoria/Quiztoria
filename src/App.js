@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import QuestionsFetch from './services/fetching/questions';
 import QuizesFetch from './services/fetching/quizes';
 import MEiNFetch from './services/fetching/meinApi';
+import Accounts from './services/fetching/accounts';
 
 class App extends React.Component{
   constructor(){
@@ -46,7 +47,10 @@ class App extends React.Component{
   quizGetAllRequest = { itemsPerPage: 10, page:0 };
 
   // MEin related
-  for3Button = new MEiNFetch();
+  for3Buttons = new MEiNFetch();
+
+  // Auth related
+  for4Buttons = new Accounts();
 
   handleInput(e){
     const nameOfState = e.target.name;
@@ -109,7 +113,7 @@ class App extends React.Component{
 
           <hr style={{width:"300px"}}/>
 
-          <a onClick={() => this.for3Button.getPlacowki()} >
+          <a onClick={() => this.for3Buttons.getPlacowki()} >
             MEiN - GET REQUEST -> GET PLACOWKI
           </a>
 
@@ -125,6 +129,12 @@ class App extends React.Component{
           <input type="number" name="yearEnd" onChange={this.handleInput.bind(this)}/>
           ONLY FOR RANDOM - amount: <input type="number" name="yearAmountResults" onChange={this.handleInput.bind(this)}/>
 
+
+          <hr style={{width:"300px"}}/>
+
+          <a onClick={() => this.for4Buttons.createAccount({email:'dupa3442@dup.pl', password:'abc123def456'})} >
+            REGISTER
+          </a>
         </header>
       </div>
     );
