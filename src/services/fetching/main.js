@@ -2,7 +2,7 @@ import React from 'react';
 
 class FetchController extends React.Component {
     #baseUrl = 'http://borsuq.xyz';
-    #port = "80";
+    #port = "8080";
 
     constructor(props){
         super(props);

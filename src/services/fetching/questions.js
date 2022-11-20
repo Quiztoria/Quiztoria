@@ -57,7 +57,21 @@ class QuestionsFetch extends React.Component {
 
         const fetch = new FetchController();
         const response = await fetch.makeRequest(`question?itemsPerPage=${itemsPerPage}&page=${page}`, "GET");
-        return response.json();
+        const delayed = await response.json();
+
+        const toReturn = delayed.map((item) => (
+            <div>
+                <h3>{item.questionString}</h3>
+                <ol>
+                    {item.answers.map(question => (
+                        <li key={Math.random(1,1000)}>{question}</li>
+                    ))}
+                </ol>
+            </div>
+        ));
+
+
+        return toReturn;
     }   
 
     async getSingleQuestion(props){
@@ -66,7 +80,18 @@ class QuestionsFetch extends React.Component {
 
         const fetch = new FetchController();
         const response = await fetch.makeRequest(`question/${id}`, "GET");
-        return response.json();
+        const delayed = await response.json();
+        
+        return (
+            <div>
+                <h3>{delayed.questionString}</h3>
+                <ol>
+                    {delayed.answers.map(question => (
+                        <li key={Math.random(1,1000)}>{question}</li>
+                    ))}
+                </ol>
+            </div>
+        )
     }
 
     async getQuestionsFromToDate(props){
@@ -75,7 +100,20 @@ class QuestionsFetch extends React.Component {
 
         const fetch = new FetchController();
         const response = await fetch.makeRequest(`search/by-time-range/all?yearBegin=${yearBegin.id}&yearEnd=${yearEnd.id}`, "GET");
-        return response.json();
+        const delayed = await response.json();
+
+        const toReturn = delayed.map((item) => (
+            <div>
+                <h3>{item.questionString}</h3>
+                <ol>
+                    {item.answers.map(question => (
+                        <li key={Math.random(1,1000)}>{question}</li>
+                    ))}
+                </ol>
+            </div>
+        ));
+
+        return toReturn;
     }
 
     async getQuestionsFromToDateRandom(props){
@@ -84,7 +122,20 @@ class QuestionsFetch extends React.Component {
 
         const fetch = new FetchController();
         const response = await fetch.makeRequest(`search/by-time-range/random?yearBegin=${yearBegin.id}&yearEnd=${yearEnd.id}&number=${yearAmountResults.id}`, "GET");
-        return response.json();
+        const delayed = await response.json();
+
+        const toReturn = delayed.map((item) => (
+            <div>
+                <h3>{item.questionString}</h3>
+                <ol>
+                    {item.answers.map(question => (
+                        <li key={Math.random(1,1000)}>{question}</li>
+                    ))}
+                </ol>
+            </div>
+        ));
+
+        return toReturn;
     }
 
 

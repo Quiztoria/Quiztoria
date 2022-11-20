@@ -10,6 +10,8 @@ class App extends React.Component{
   constructor(){
     super()
     this.state = { 
+      delayedContent: '',
+
       questionDeleteRequest: {id: 1}, 
       questionGetRequest: {id: 1},
       questionGetRequestIds: {id: []},
@@ -37,9 +39,9 @@ class App extends React.Component{
     "answOpt3": "nie",
     "dateEnd": parseInt(1941),
     "dateStart": parseInt(1943),
-    "questionString": "test" 
+    "questionString": "question of ww2" 
   }
-  questionGetAllRequest    = { itemsPerPage: 10, page:0 };
+  questionGetAllRequest    = { itemsPerPage: 999, page:0 };
 
   // Quiz related consts
   for2Buttons = new QuizesFetch({disableHandler:true});
@@ -58,9 +60,34 @@ class App extends React.Component{
     this.setState({[nameOfState]: {id: parseInt(e.target.value)}})
   }
 
+  async getAllQuestions(){
+    const response = await this.forButtons.getAllQuestions(this.questionGetAllRequest);
+    this.setState({delayedContent: (response)});
+  }
+
+  async getSingleQuestion(){
+    const response = await this.forButtons.getSingleQuestion(this.state.questionGetRequest)
+    this.setState({delayedContent: (response)});
+  }
+
+  async getAllQuestionsFromToDate(){
+    const response = await this.forButtons.getQuestionsFromToDate({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd})
+    this.setState({delayedContent: (response)});
+  }
+
+  async getAllQuestionsFromToDateRandom(){
+    //nie dziala dlaczego nwm
+    const response = await this.forButtons.getQuestionsFromToDateRandom({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd, yearAmountResults: this.state.yearAmountResults});
+    this.setState({delayedContent: (response)});
+  }
+
   render(){
     return (
       <div className="App">
+        <div>
+          {this.state.delayedContent}
+        </div>
+
         {/* { <QuestionsFetch id="1" type="single" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa" /> } */}
         {/* { <QuizesFetch type="save" accountId="1" questionsId="1,2,3" quizName="test" quizLevel="average"/> } */}
         <header className="App-header">
@@ -68,11 +95,11 @@ class App extends React.Component{
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a onClick={() => this.forButtons.getAllQuestions(this.questionGetAllRequest)} >
+          <a onClick={ async () => await this.getAllQuestions() } >
             QUESTION - GET ALL REQUEST
           </a>
 
-          <a onClick={() => this.forButtons.getSingleQuestion(this.state.questionGetRequest)} >
+          <a onClick={ async () => await this.getSingleQuestion() } >
             QUESTION - GET SINGLE REQUEST
           </a>
           <input type="number" name="questionGetRequest" onChange={this.handleInput.bind(this)}/>
@@ -119,11 +146,11 @@ class App extends React.Component{
 
           <hr style={{width:"300px"}}/>
 
-          <a onClick={() => this.forButtons.getQuestionsFromToDate({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd})} >
-            QUIZ - GET REQUEST -> Get all items, from year to year, start from year
+          <a onClick={async () => await this.getAllQuestionsFromToDate()} >
+            QUESTIONS - GET REQUEST -> Get all items, from year to year, start from year
           </a>
-          <a onClick={() => this.forButtons.getQuestionsFromToDateRandom({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd, yearAmountResults: this.state.yearAmountResults})} >
-            QUIZ - GET REQUEST -> Get all items, from year to year, start from year, random
+          <a onClick={async () => await this.getAllQuestionsFromToDateRandom()} >
+            QUESTIONS - GET REQUEST -> Get all items, from year to year, start from year, random
           </a>
           <input type="number" name="yearBegin" onChange={this.handleInput.bind(this)}/>
           <input type="number" name="yearEnd" onChange={this.handleInput.bind(this)}/>
