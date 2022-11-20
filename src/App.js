@@ -20,9 +20,10 @@ class App extends React.Component{
       quizQuestionId: {id: 1},
       quizId: {id: 1},
 
-      // Search
+      // Search -- YEAR, AMOUNT WILL CHANGE TO ID IN RESPONSE
       yearBegin: { year: 1 },
-      yearEnd: { year: 1 }
+      yearEnd: { year: 1 },
+      yearAmountResults: { amount: 1 }
     }
   }
 
@@ -117,8 +118,12 @@ class App extends React.Component{
           <a onClick={() => this.forButtons.getQuestionsFromToDate({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd})} >
             QUIZ - GET REQUEST -> Get all items, from year to year, start from year
           </a>
+          <a onClick={() => this.forButtons.getQuestionsFromToDateRandom({yearBegin:this.state.yearBegin, yearEnd:this.state.yearEnd, yearAmountResults: this.state.yearAmountResults})} >
+            QUIZ - GET REQUEST -> Get all items, from year to year, start from year, random
+          </a>
           <input type="number" name="yearBegin" onChange={this.handleInput.bind(this)}/>
           <input type="number" name="yearEnd" onChange={this.handleInput.bind(this)}/>
+          ONLY FOR RANDOM - amount: <input type="number" name="yearAmountResults" onChange={this.handleInput.bind(this)}/>
 
         </header>
       </div>

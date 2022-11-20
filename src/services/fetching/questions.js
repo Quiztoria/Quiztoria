@@ -72,10 +72,18 @@ class QuestionsFetch extends React.Component {
     async getQuestionsFromToDate(props){
         //yearFrom, yearTo, level, tags
         const { yearBegin, yearEnd } = props;
-        console.log(props);
 
         const fetch = new FetchController();
         const response = await fetch.makeRequest(`search/by-time-range/all?yearBegin=${yearBegin.id}&yearEnd=${yearEnd.id}`, "GET");
+        return response.json();
+    }
+
+    async getQuestionsFromToDateRandom(props){
+        //yearFrom, yearTo, level, tags
+        const { yearBegin, yearEnd, yearAmountResults } = props;
+
+        const fetch = new FetchController();
+        const response = await fetch.makeRequest(`search/by-time-range/random?yearBegin=${yearBegin.id}&yearEnd=${yearEnd.id}&number=${yearAmountResults.id}`, "GET");
         return response.json();
     }
 
