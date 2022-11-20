@@ -15,6 +15,7 @@ class App extends React.Component{
       questionDeleteRequest: {id: 1}, 
       questionGetRequest: {id: 1},
       questionGetRequestIds: {id: []},
+      questionPostName: {name: ''},
 
       quizGetRequest: {id: 1},
       quizDeleteRequest: {id: 1},
@@ -41,7 +42,7 @@ class App extends React.Component{
     "dateStart": parseInt(1943),
     "questionString": "question of ww2" 
   }
-  questionGetAllRequest    = { itemsPerPage: 999, page:0 };
+  questionGetAllRequest  = { itemsPerPage: 999, page:0 };
 
   // Quiz related consts
   for2Buttons = new QuizesFetch({disableHandler:true});
@@ -107,6 +108,7 @@ class App extends React.Component{
           <a onClick={() => this.forButtons.saveQuestion(this.questionPostRequest)} >
             QUESTION - POST REQUEST
           </a>
+          <input type="text" name="questionSaveRequest" onChange={this.handleInput.bind(this)}/>
 
           <a onClick={() => this.forButtons.deleteQuestion(this.state.questionDeleteRequest)} >
             QUESTION - DELETE REQUEST

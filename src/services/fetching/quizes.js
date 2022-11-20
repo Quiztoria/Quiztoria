@@ -35,6 +35,29 @@ class QuizesFetch extends React.Component {
         }
     }
 
+    async getAllQuizes(props){
+        console.log('all questions');
+        const { itemsPerPage, page } = props;
+
+        const fetch = new FetchController();
+        const response = await fetch.makeRequest(`question?itemsPerPage=${itemsPerPage}&page=${page}`, "GET");
+        const delayed = await response.json();
+
+        const toReturn = delayed.map((item) => (
+            <div>
+                <h3>{item.questionString}</h3>
+                <ol>
+                    {item.answers.map(question => (
+                        <li key={Math.random(1,1000)}>{question}</li>
+                    ))}
+                </ol>
+            </div>
+        ));
+
+
+        return toReturn;
+    }   
+
     deleteQuiz( props ){
         const fetch = new FetchController();
         return fetch.makeRequest(`quiz/${props.id}`, "DELETE");
