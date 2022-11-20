@@ -27,7 +27,7 @@ class QuizesFetch extends React.Component {
                 this.saveQuiz(accountId, questionsId, quizName, quizLevel);
                 break;
             case type === 'delete':
-                this.removeQuiz(quizId);
+                this.deleteQuiz(quizId);
                 break;
             default:
                 console.error('Missing arguments for quizes function');
@@ -35,8 +35,9 @@ class QuizesFetch extends React.Component {
         }
     }
 
-    removeQuiz( quizId ){
-        //later
+    deleteQuiz( props ){
+        const fetch = new FetchController();
+        return fetch.makeRequest(`quiz/${props.id}`, "DELETE");
     }
 
     addQuestionToQuiz(props){

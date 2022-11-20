@@ -83,6 +83,11 @@ class App extends React.Component{
             QUIZ - POST REQUEST
           </a>
 
+          <a onClick={() => this.for2Buttons.deleteQuiz(this.state.quizDeleteRequest)} >
+            QUIZ - DELETE REQUEST
+          </a>
+          <input type="number" name="quizDeleteRequest" onChange={this.handleInput.bind(this)}/>
+
           <a onClick={() => this.for2Buttons.addQuestionToQuiz({quizId:this.state.quizId, quizQuestionId:this.state.quizQuestionId})} >
             QUIZ - POST REQUEST -> Add Question To Quiz
           </a>
