@@ -7,6 +7,7 @@ import React from 'react';
 class App extends React.Component{
   constructor(){
     super()
+    this.state = { questionDeleteRequest: {id: 1}, questionGetRequest: {id: 1} }
   }
 
   forButtons = new QuestionsFetch({disableHandler:true});
@@ -19,14 +20,18 @@ class App extends React.Component{
     "dateStart": parseInt(2022),
     "questionString": "test" 
   }
-  questionDeleteRequest = { id: 1 };
+  
   questionGetAllRequest    = { itemsPerPage: 10, page:0 };
-  questionGetRequest    = { id: 1 };
+
+  handleInput(e){
+    const nameOfState = e.target.name;
+    this.setState({[nameOfState]: {id: parseInt(e.target.value)}})
+  }
 
   render(){
     return (
       <div className="App">
-        { <QuestionsFetch id="1" type="single" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa" /> }
+        {/* { <QuestionsFetch id="1" type="single" yearFrom="1917" yearTo="1990" tags="II wojna swiatowa" /> } */}
         {/* { <QuizesFetch type="save" accountId="1" questionsId="1,2,3" quizName="test" quizLevel="average"/> } */}
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -36,15 +41,20 @@ class App extends React.Component{
           <a onClick={() => this.forButtons.getAllQuestions(this.questionGetAllRequest)} >
             QUESTION - GET ALL REQUEST
           </a>
-          <a onClick={() => this.forButtons.getSingleQuestion(this.questionGetRequest)} >
+
+          <a onClick={() => this.forButtons.getSingleQuestion(this.state.questionGetRequest)} >
             QUESTION - GET SINGLE REQUEST
           </a>
+          <input type="number" name="questionGetRequest" onChange={this.handleInput.bind(this)}/>
+
           <a onClick={() => this.forButtons.saveQuestion(this.questionPostRequest)} >
             QUESTION - POST REQUEST
           </a>
-          <a onClick={() => this.forButtons.deleteQuestion(this.questionDeleteRequest)} >
+          
+          <a onClick={() => this.forButtons.deleteQuestion(this.state.questionDeleteRequest)} >
             QUESTION - DELETE REQUEST
           </a>
+          <input type="number" name="questionDeleteRequest" onChange={this.handleInput.bind(this)}/>
   
           <hr style={{width:"300px"}}/>
         </header>
