@@ -39,6 +39,12 @@ class QuizesFetch extends React.Component {
         //later
     }
 
+    addQuestionToQuiz(props){
+        const fetch = new FetchController();
+
+        return fetch.makeRequest(`quiz/${props.quizId.id}/addquestion`, "POST", props.quizQuestionId.id);
+    }
+
     saveQuiz( data ) {
         const fetch = new FetchController();
         const requestBody = data.name;

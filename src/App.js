@@ -13,7 +13,10 @@ class App extends React.Component{
 
       quizGetRequest: {id: 1},
       quizDeleteRequest: {id: 1},
-      quizAddQuestion: { questionId:1, quizId:1 }
+      
+      // Add question to quiz
+      quizQuestionId: {id: 1},
+      quizId: {id: 1}
     }
   }
 
@@ -80,6 +83,11 @@ class App extends React.Component{
             QUIZ - POST REQUEST
           </a>
 
+          <a onClick={() => this.for2Buttons.addQuestionToQuiz({quizId:this.state.quizId, quizQuestionId:this.state.quizQuestionId})} >
+            QUIZ - POST REQUEST -> Add Question To Quiz
+          </a>
+          <input type="number" name="quizQuestionId" onChange={this.handleInput.bind(this)}/>
+          <input type="number" name="quizId" onChange={this.handleInput.bind(this)}/>
         </header>
       </div>
     );
