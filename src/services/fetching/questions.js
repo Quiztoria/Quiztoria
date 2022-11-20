@@ -24,8 +24,8 @@ class QuestionsFetch extends React.Component {
             case !type || type === 'single':
                 this.getSingleQuestion(this.props);
                 break;
-            case type === 'multiple':
-                this.getMulitpleQuestions(this.props);
+            case type === 'multiple-ids':
+                this.getMulitpleQuestionsById(this.props);
                 break;
             case type === 'save':
                 this.saveQuestion(this.props);
@@ -50,14 +50,6 @@ class QuestionsFetch extends React.Component {
 
         return fetch.makeRequest("question", "POST", requestBody);
     }
-
-    getMulitpleQuestions(){
-        //yearFrom, yearTo, level, amount
-        console.log('multiple questions');
-
-        const fetch = new FetchController();
-        console.log(fetch.makeRequest('questions/5,6,7,8'));
-    }   
 
     async getAllQuestions(props){
         console.log('all questions');

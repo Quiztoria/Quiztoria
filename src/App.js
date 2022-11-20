@@ -1,8 +1,9 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import logo from './logo.svg';
 import QuestionsFetch from './services/fetching/questions';
 import QuizesFetch from './services/fetching/quizes';
-import React from 'react';
+import MEiNFetch from './services/fetching/meinApi';
 
 class App extends React.Component{
   constructor(){
@@ -10,6 +11,7 @@ class App extends React.Component{
     this.state = { 
       questionDeleteRequest: {id: 1}, 
       questionGetRequest: {id: 1},
+      questionGetRequestIds: {id: []},
 
       quizGetRequest: {id: 1},
       quizDeleteRequest: {id: 1},
@@ -38,9 +40,12 @@ class App extends React.Component{
   quizPostRequest = { name: "jakis quiz" }
   quizGetAllRequest = { itemsPerPage: 10, page:0 };
 
+  // MEin related
+  for3Button = new MEiNFetch();
 
   handleInput(e){
     const nameOfState = e.target.name;
+
     this.setState({[nameOfState]: {id: parseInt(e.target.value)}})
   }
 
@@ -96,6 +101,12 @@ class App extends React.Component{
           </a>
           <input type="number" name="quizQuestionId" onChange={this.handleInput.bind(this)}/>
           <input type="number" name="quizId" onChange={this.handleInput.bind(this)}/>
+
+          <hr style={{width:"300px"}}/>
+
+          <a onClick={() => this.for3Button.getPlacowki()} >
+            MEiN - GET REQUEST -> GET PLACOWKI
+          </a>
         </header>
       </div>
     );
