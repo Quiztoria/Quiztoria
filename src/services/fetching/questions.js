@@ -39,8 +39,9 @@ class QuestionsFetch extends React.Component {
         }
     }
 
-    deleteQuestion(){
-        //later
+    deleteQuestion(data){
+        const fetch = new FetchController();
+        return fetch.makeRequest(`question/${data.id}`, "DELETE");
     }
 
     saveQuestion(data){

@@ -6,7 +6,7 @@ import QuizesFetch from './services/fetching/quizes';
 
 function App() {
   const forButtons = new QuestionsFetch({disableHandler:true});
-  const dataToSend = {            
+  const questionPostRequest = {            
     "answCorrect": "tak",
     "answOpt1": "nie",
     "answOpt2": "nie",
@@ -15,6 +15,8 @@ function App() {
     "dateStart": parseInt(2022),
     "questionString": "test" 
   }
+  const questionDeleteRequest = { id: 1 };
+  const questionGetRequest    = { id: 1 };
 
   return (
     <div className="App">
@@ -25,8 +27,14 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a onClick={() => forButtons.getSingleQuestion({id:1})} >
-          MAKE REQUEST
+        <a onClick={() => forButtons.getSingleQuestion(questionGetRequest)} >
+          QUESTION - GET REQUEST
+        </a>
+        <a onClick={() => forButtons.saveQuestion(questionPostRequest)} >
+          QUESTION - POST REQUEST
+        </a>
+        <a onClick={() => forButtons.deleteQuestion(questionDeleteRequest)} >
+          QUESTION - DELETE REQUEST
         </a>
       </header>
     </div>
