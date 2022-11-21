@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Backend integration for Quiztoria
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An abandoned (probably) project made on Hackathon for connecting backend with frontend, made in components.
+The frontend was never finished.
 
 ## Available Scripts
 
